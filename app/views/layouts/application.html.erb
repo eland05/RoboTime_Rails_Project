@@ -9,9 +9,16 @@
   </head>
 
   <body>
-    <h1>Welcome to RoboTime</h1>
-    <h2>Keep track of your robotics teams work time and tasks.</h2>
-    <p> Please SignIn or SignUp to Clock In or Out</p>
+    <h1>RoboTime Clock</h1>
+    <h3>Keep track of your robotics teams work-time and tasks.</h3>
+    <p class="notice"><%= notice %></p>
+
+    <% if current_user %>
+      <p>You are logged in as <%= current_user.email %> <br>
+        <%= link_to("Sign Out", destroy_user_session_path, :method => 'delete') %></p>
+    <% else %>
+      <p> Please <%=link_to "Sign In", new_user_session_url %> or <%=link_to "Sign Up", new_user_registration_url %> to start tracking your RoboTime</p>
+    <% end %>
     <%= yield %>
   </body>
 </html>
