@@ -17,7 +17,7 @@
       <p>You are logged in as <%= current_user.email %> <br>
         <%= link_to("Sign Out", destroy_user_session_path, :method => 'delete') %></p>
     <% else %>
-      <p> Please <%=link_to "Sign In", new_user_session_url %> or <%=link_to "Sign Up", new_user_registration_url %> to start tracking your RoboTime</p>
+      <p> Please <%=link_to "Sign In", new_user_session_url %> or <%=link_to "Sign Up", new_user_registration_url %> or <%= link_to "Sign in with Github", user_github_omniauth_authorize_path %> to start tracking your RoboTime</p>
     <% end %>
     <%= yield %>
   </body>
