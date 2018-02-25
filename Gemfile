@@ -34,7 +34,7 @@ gem 'omniauth-github'
 gem 'dotenv-rails'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-
+gem 'cancancan'
 gem 'bootstrap-sass'
 
 group :development, :test do
