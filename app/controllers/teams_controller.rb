@@ -4,12 +4,27 @@ class TeamsController < ApplicationController
   # GET /teams
   # GET /teams.json
   def index
-    @teams = Team.all
+    if signed_in?
+      @teams = Team.where(user_id: current_user.id)
+    else
+      redirect_to root_path, notice: 'You are not currently signed in.'
+    end
   end
 
   # GET /teams/1
   # GET /teams/1.json
   def show
+    if signed_in? && @team.user_id == current_user.id
+      team_members = TeamMember.where(team_id: @team.id)
+      @team_members = []
+      if !team_members.empty?
+        team_members.each do |member|
+        @team_members << User.find(member.user_id)
+        end
+      end
+    else
+      redirect_to teams_path, notice: 'Please select one of your teams.'
+    end
   end
 
   # GET /teams/new
@@ -24,16 +39,16 @@ class TeamsController < ApplicationController
   # POST /teams
   # POST /teams.json
   def create
-    @team = Team.new(team_params)
-
-    respond_to do |format|
+    if signed_in?
+      @team = Team.new(team_params)
+      @team.user_id = (current_user.id)
       if @team.save
-        format.html { redirect_to @team, notice: 'Team was successfully created.' }
-        format.json { render :show, status: :created, location: @team }
+        redirect_to @team, notice: 'Team was successfully created.'
       else
-        format.html { render :new }
-        format.json { render json: @team.errors, status: :unprocessable_entity }
+        render :new
       end
+    else
+      redirect_to root_path
     end
   end
 

@@ -7,6 +7,7 @@ class User < ApplicationRecord
   devise :omniauthable, :omniauth_providers => [:github]
 
   has_many :teams
+  has_many :team_members
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|

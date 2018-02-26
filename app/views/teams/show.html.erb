@@ -10,5 +10,19 @@
   <%= @team.number %>
 </p>
 
+<p>
+  <strong>Team Members:</strong>
+    <% if @team_members.empty? %>
+      <p>You do not have any Team Members</p>
+      <p>Click HERE to add members to your team.</p>
+    <% else %>
+      <ul>
+        <% @team_members.each do |member| %>
+        <li><%= link_to member.email, profile_path(member) %> </li>
+      <% end %>
+      </ul>
+    <% end %>
+</p>
+
 <%= link_to 'Edit', edit_team_path(@team) %> |
 <%= link_to 'Back', teams_path %>
