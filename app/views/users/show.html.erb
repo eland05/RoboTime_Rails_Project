@@ -1,1 +1,78 @@
-Profile 
+<h2>User Profile</h2>
+<h3>Name: <%= @user.name %></h3>
+<h3>email: <%= @user.email %></h3>
+
+<%= image_tag 'clock_in.png', alt: 'clock in', size: '250x150' %>
+<%= image_tag 'clock_out.png', alt: 'clock out', size: '250x150' %>
+
+
+
+<!--
+
+<i"/images/clock_in.png" alt="">
+<img src="/images/clock_out.png" alt="">
+
+<section class="portfolio" id="portfolio">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-lg-4">
+        <a class="portfolio-item d-block mx-auto" href="#portfolio-modal-1">
+          <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
+            <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
+              <i class="fa fa-search-plus fa-3x"></i>
+            </div>
+          </div>
+
+        </a>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <a class="portfolio-item d-block mx-auto" href="#portfolio-modal-2">
+          <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
+            <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
+              <i class="fa fa-search-plus fa-3x"></i>
+            </div>
+          </div>
+
+        </a>
+      </div>
+    </div>
+   </div>
+ </section> -->
+
+<h3>Work History</h3>
+<table>
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Clock In</th>
+      <th>Clock Out</th>
+      <th>Work time</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td>2/19/18</td>
+      <td>12:58pm</td>
+      <td>8:12pm</td>
+      <td>7hours and 14 min</td>
+    </tr>
+    <tr>
+      <td>2/20/18</td>
+      <td>4:30pm</td>
+      <td>10:05pm</td>
+      <td>5 hours and 35 min</td>
+    </tr>
+    <tr>
+      <td>total days</td>
+      <td>total clock ins</td>
+      <td>total clock outs</td>
+      <td>total hours</td>
+    </tr>
+  </tbody>
+
+</table>
+
+
+
+<h5><%= link_to 'Edit User Profile', edit_user_registration_path(@user) %></h5>
