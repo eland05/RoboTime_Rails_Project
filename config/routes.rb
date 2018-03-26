@@ -3,5 +3,5 @@ Rails.application.routes.draw do
   resources :teams
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   #get '/auth/github/callback' => "omniauth_callbacks#github"
-  get 'profile', to: :show, controller: 'users'
+  get '/profile/:id', to: 'users#show', as: 'profile'
 end
