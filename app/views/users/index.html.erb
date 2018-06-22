@@ -1,0 +1,6 @@
+<p>Check box list with all users names listed to add members to team members table.</p>
+<ul>
+  <% @users.each do |user| %>
+    <li><%= user.name %></li>
+  <% end %>
+</ul>

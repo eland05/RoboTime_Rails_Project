@@ -14,11 +14,11 @@
   <strong>Team Members:</strong>
     <% if @team_members.empty? %>
       <p>You do not have any Team Members</p>
-      <p>Click HERE to add members to your team.</p>
+      <p>Click <%= link_to "HERE", users_url %> to add members to your team.</p>
     <% else %>
       <ul>
         <% @team_members.each do |member| %>
-        <li><%= link_to member.email, profile_path(member) %> </li>
+        <li><%= link_to member.email, user(member) %> </li>
       <% end %>
       </ul>
     <% end %>
