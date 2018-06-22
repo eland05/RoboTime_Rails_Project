@@ -1,3 +1,8 @@
 <p>
-  form for user to fill out remaining user profile information such as name and eventually role
+  <%= form_for @user do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %><br />
+    <%= f.submit %>
+  <% end %>
 </p>
+<h5><%= link_to 'Edit Account Information', edit_user_registration_path(@user) %></h5>

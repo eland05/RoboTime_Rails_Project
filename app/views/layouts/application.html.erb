@@ -34,30 +34,34 @@
   <div class="container-fluid">
     <a class="navbar-brand js-scroll-trigger" href="/">RoboTime Clock</a>
 
+        <% if current_user %>
          <div class="collapse navbar-collapse" id="navbarResponsive">
            <ul class="nav navbar-nav ml-auto">
+
              <li class="nav-item mx-0 mx-lg-1">
                <%= link_to 'Teams', teams_path %>
              </li>
-             <!--<li class="nav-item mx-0 mx-lg-1">
-               <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#about">About</a>
-             </li> -->
+             <li class="nav-item mx-0 mx-lg-1">
+               <%= link_to 'Profile', user_path(current_user) %>
+               <!--<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/users/#{:id}">Profile</a>-->
+             </li>
            </ul>
 
-          <ul class="nav navbar-nav navbar-right">
-
+           <ul class="nav navbar-nav navbar-right">
              <li class="nav-item mx-0 mx-lg-1">
-               <% if current_user %>
-                 <%= link_to("Sign Out", destroy_user_session_path, :method => 'delete') %>
-               <% end %>
+                <%= link_to("Sign Out", destroy_user_session_path, :method => 'delete') %>
              </li>
            </ul>
          </div>
+        <% end %>
        </div>
      </nav>
      <p class="notice"><%= notice %></p>
      <% if current_user %>
        <h4>You are logged in as <%= current_user.email %></h4>
+          <% if !current_user.name %>
+            <p>Please complete your profile <%= link_to 'HERE', edit_user_url(current_user)%></p>
+          <% end %>
      <% else %>
        <h4> Please <%=link_to "Sign In", new_user_session_url %> or <%=link_to "Sign Up", new_user_registration_url %> or <%= link_to "Sign in with Github", user_github_omniauth_authorize_path %> to start tracking your RoboTime</h4>
      <% end %>
@@ -69,19 +73,19 @@
        <small>Copyright &copy; Eland05</small>
      </div>
    </div>
-   <!-- Bootstrap core JavaScript -->
+   <!-- Bootstrap core JavaScript
       <script src="vendor/jquery/jquery.min.js"></script>
-      <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+      <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>-->
 
-      <!-- Plugin JavaScript -->
+      <!-- Plugin JavaScript
       <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-      <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+      <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>-->
 
-      <!-- Contact Form JavaScript -->
+      <!-- Contact Form JavaScript
       <script src="js/jqBootstrapValidation.js"></script>
-      <script src="js/contact_me.js"></script>
+      <script src="js/contact_me.js"></script>-->
 
-      <!-- Custom scripts for this template -->
-      <script src="js/freelancer.min.js"></script>
+      <!-- Custom scripts for this template
+      <script src="js/freelancer.min.js"></script>-->
   </body>
 </html>
