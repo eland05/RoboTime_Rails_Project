@@ -14,7 +14,7 @@
   <strong>Team Members:</strong>
     <% if @team_members.empty? %>
       <p>You do not have any Team Members</p>
-      <p>Click <%= link_to "HERE", users_url %> to add members to your team.</p>
+      <p>Click <%= link_to "HERE", edit_team_path(@team) %> to add members to your team.</p>
     <% else %>
       <ul>
         <% @team_members.each do |member| %>
