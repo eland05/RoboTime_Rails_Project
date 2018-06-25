@@ -21,6 +21,14 @@
     <%= form.number_field :number, id: :team_number %>
   </div>
 
+  <h5>Check off the users you would like to add to your team.</h5>
+  <div class="field">
+    <% User.all.each do |user| %>
+      <%= check_box_tag "team[user_ids][]", user.id, form.object.users.include?(user) %>
+        <%= user.name %>(<%= user.email %>)<br>
+      <% end %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
