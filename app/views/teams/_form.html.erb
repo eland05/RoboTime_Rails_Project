@@ -23,11 +23,11 @@
 
   <h5>Check off the users you would like to add to your team.</h5>
   <div class="field">
-    <!--<%= form.collection_check_boxes(:user_ids, User.all, :id, :name) do |user| %>
-      <%= user.label { user.check_box } %>
+    <!--<%= form.fields_for :team_members do |member| %>
+      <%= member.collection_check_boxes(:user_ids, User.all, :id, :name) %>
     <% end %>-->
     <% User.all.each do |user| %>
-      <%= check_box_tag "team[user_ids][]", user.id, form.object.users.include?(user) %>
+      <%= check_box_tag "team[team_members_attributes][user_ids][]", user.id, form.object.users.include?(user) %>
         <%= user.name %>(<%= user.email %>)<br>
       <% end %>
   </div>

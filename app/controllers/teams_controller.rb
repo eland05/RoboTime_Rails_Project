@@ -39,6 +39,7 @@ class TeamsController < ApplicationController
   # POST /teams
   # POST /teams.json
   def create
+    raise params.inspect
     if signed_in?
       @team = Team.new(team_params)
       @team.user_id = (current_user.id)
@@ -55,6 +56,7 @@ class TeamsController < ApplicationController
   # PATCH/PUT /teams/1
   # PATCH/PUT /teams/1.json
   def update
+    raise params.inspect
     respond_to do |format|
       if @team.update(team_params)
         format.html { redirect_to @team, notice: 'Team was successfully updated.' }
